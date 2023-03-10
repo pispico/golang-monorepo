@@ -1,9 +1,11 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
-
 go_library(
     name = "router",
     srcs = ["router.go"],
-    importpath = "",
+    importpath = "golang-monorepo/packages/main_app/router",
     visibility = ["//visibility:public"],
-    deps = ["@com_github_gin_gonic_gin//:gin"],
+    deps = [
+         "//packages/shared/handlers/health:health",
+          "@com_github_gin_gonic_gin//:go_default_library"
+    ]
 )
