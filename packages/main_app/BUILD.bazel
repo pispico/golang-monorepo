@@ -1,13 +1,21 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_test")
-go_binary(
-    name = "main_app",
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "lib",
     srcs = ["main.go"],
     importpath = "github.com/pispico/golang-monorepo/packages/main_app",
-    deps = [
-        "//packages/main_app/router:router"
-    ],
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_pispico_golang_monorepo//packages/main_app/router:router"],
 )
+
+go_binary(
+    name = "main_app",
+    embed = [":lib"],
+    visibility = ["//visibility:public"],
+)
+
 go_test(
-    name = "mainTest",
+    name = "lib_test",
     srcs = ["main_test.go"],
+    embed = [":lib"],
 )

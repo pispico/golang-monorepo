@@ -1,14 +1,14 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_test", "go_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
-    name = "sum",
+    name = "arrays",
     srcs = ["sum.go"],
     importpath = "github.com/pispico/golang-monorepo/packages/arrays",
     visibility = ["//visibility:public"],
 )
 
 go_test(
-    name = "sum_test",
+    name = "lib_test",
     srcs = ["sum_test.go"],
-    embed  = [":sum"],
+    embed = [":arrays"],
 )

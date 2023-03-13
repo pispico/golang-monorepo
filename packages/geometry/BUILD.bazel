@@ -1,14 +1,14 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_test", "go_library")
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
-    name = "perimeter",
+    name = "geometry",
     srcs = ["perimeter.go"],
     importpath = "github.com/pispico/golang-monorepo/packages/geometry",
     visibility = ["//visibility:public"],
 )
 
 go_test(
-    name = "perimeter_test",
+    name = "lib_test",
     srcs = ["perimeter_test.go"],
-    embed = [":perimeter"],
+    embed = [":geometry"],
 )
