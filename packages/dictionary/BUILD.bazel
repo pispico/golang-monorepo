@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "dictionary",
+    srcs = ["dictionary.go"],
+    importpath = "github.com/pispico/golang-monorepo/packages/dictionary",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "lib_test",
+    srcs = ["dictionary_test.go"],
+    embed = [":dictionary"],
+)
